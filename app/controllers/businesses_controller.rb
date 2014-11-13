@@ -28,12 +28,13 @@ class BusinessesController < ApplicationController
 
     respond_to do |format|
       if @business.save
-        format.html { redirect_to @business, notice: 'Business was successfully created.' }
+        format.html { redirect_to businesses, notice: 'Business was successfully created.' }
         format.json { render :show, status: :created, location: @business }
       else
         format.html { render :new }
         format.json { render json: @business.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
