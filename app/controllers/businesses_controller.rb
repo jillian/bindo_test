@@ -5,51 +5,26 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all
+
+    @json = Array.new
+
+    @businesses.each do |business|
+      @json << business.to_json
+    end
+    Business.by_category(params[:category]) if params.has_key?(:category)
   end
+
+  def filter
+    @businesses = Business.all
+    @businesses.by_category(params[:category]) if params.has_key?(:category)
+    @businesses.by_location(params[:location]) if params.has_key?(:location)
+  end
+
+
 
   # GET /businesses/1
   # GET /businesses/1.json
   def show
-  end
-
-  # GET /businesses/new
-  def new
-    @business = Business.new
-  end
-
-  # GET /businesses/1/edit
-  def edit
-  end
-
-  # POST /businesses
-  # POST /businesses.json
-  def create
-    @business = Business.new(business_params)
-
-    respond_to do |format|
-      if @business.save
-        format.html { redirect_to businesses, notice: 'Business was successfully created.' }
-        format.json { render :show, status: :created, location: @business }
-      else
-        format.html { render :new }
-        format.json { render json: @business.errors, status: :unprocessable_entity }
-      end
-
-    end
-  end
-
-  # PATCH/PUT /businesses/1
-  # PATCH/PUT /businesses/1.json
-  def update
-    respond_to do |format|
-      if @business.update(business_params)
-        format.html { redirect_to @business, notice: 'Business was successfully updated.' }
-        format.json { render :show, status: :ok, location: @business }
-      else
-        format.html { render :edit }
-        format.json { render json: @business.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /businesses/1
@@ -63,7 +38,7 @@ class BusinessesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_business
       @business = Business.find(params[:id])
     end

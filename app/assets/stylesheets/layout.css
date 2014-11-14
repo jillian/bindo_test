@@ -44,6 +44,12 @@ a.hamburger{
     margin-top: 50px;
 }
 
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* #Page Styles
 ================================================== */
 
