@@ -1,0 +1,226 @@
+# Logfile created on 2014-11-14 11:52:42 +0100 by logger.rb/44203
+2014-11-14T10:52:44.354Z 4077 TID-oxovq9otk INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T10:52:44.354Z 4077 TID-oxovq9otk INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T10:52:44.354Z 4077 TID-oxovq9otk INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T10:52:44.436Z 4077 TID-oxovts6u0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T10:52:44.436Z 4077 TID-oxovsowqs INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T10:52:44.445Z 4077 TID-oxovq901w ParseBusinessesWorker JID-68d61ded5a898de0e1d90ff8 INFO: start
+before rest client
+2014-11-14T10:52:44.446Z 4077 TID-oxovq888s ParseBusinessesWorker JID-c725957b94c466da74727e9d INFO: start
+before rest client2014-11-14T10:52:44.446Z 4077 TID-oxovv5ld8 ParseBusinessesWorker JID-a20bbe2cae6876dff2f73439 INFO: start
+
+before rest client2014-11-14T10:52:44.446Z 4077 TID-oxovr1000 ParseBusinessesWorker JID-eee4e782d0141787831f54b0 INFO: start
+
+before rest client
+2014-11-14T10:52:44.450Z 4077 TID-oxovqz8ko ParseBusinessesWorker JID-96092ca8e05c8fef0b5b20c3 INFO: start
+before rest client
+2014-11-14T10:52:44.497Z 4077 TID-oxovt2st0 ParseBusinessesWorker JID-eaa4dba53fd98f6a4c56f8fd INFO: start
+before rest client
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media3.fl.yelpcdn.com/photo/aH0HdV38U_on1umgxPB75A/30s.jpg
+zip = 94107
+zip class = Fixnum
+hellooooo
+hello???
+??????????
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media1.fl.yelpcdn.com/photo/J2pMpOeGCb4JJPfLHkfN3Q/30s.jpg
+zip = 94107
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10zip class = Fixnum
+
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media4.fl.yelpcdn.com/photo/0czPXs8IKpFYi3HOGANdrg/30s.jpg
+zip = 94107
+zip class = Fixnum
+hellooooo
+hello???
+hellooooo
+hello???
+??????????
+??????????
+after exception
+after exception
+2014-11-14T10:52:45.808Z 4077 TID-oxovr1000 ParseBusinessesWorker JID-eee4e782d0141787831f54b0 INFO: done: 1.362 sec
+2014-11-14T10:52:45.808Z 4077 TID-oxovqz8ko ParseBusinessesWorker JID-96092ca8e05c8fef0b5b20c3 INFO: done: 1.359 sec
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media1.fl.yelpcdn.com/photo/J2pMpOeGCb4JJPfLHkfN3Q/30s.jpg
+zip = 94107
+zip class = Fixnum
+hellooooo
+hello???
+??????????
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media3.fl.yelpcdn.com/photo/aH0HdV38U_on1umgxPB75A/30s.jpg
+zip = 94107
+zip class = Fixnum
+hellooooo
+after exception
+hello???
+2014-11-14T10:52:45.837Z 4077 TID-oxovq901w ParseBusinessesWorker JID-68d61ded5a898de0e1d90ff8 INFO: done: 1.392 sec
+??????????
+after exception
+2014-11-14T10:52:45.839Z 4077 TID-oxovv5ld8 ParseBusinessesWorker JID-a20bbe2cae6876dff2f73439 INFO: done: 1.393 sec
+after exception
+2014-11-14T10:52:45.842Z 4077 TID-oxovq888s ParseBusinessesWorker JID-c725957b94c466da74727e9d INFO: done: 1.397 sec
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media4.fl.yelpcdn.com/photo/0czPXs8IKpFYi3HOGANdrg/30s.jpg
+zip = 94107
+zip class = Fixnum
+hellooooo
+hello???
+??????????
+after exception
+2014-11-14T10:52:46.183Z 4077 TID-oxovt2st0 ParseBusinessesWorker JID-eaa4dba53fd98f6a4c56f8fd INFO: done: 1.686 sec
+2014-11-14T10:55:21.252Z 4140 TID-owyyephpk INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T10:55:21.252Z 4140 TID-owyyephpk INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T10:55:21.252Z 4140 TID-owyyephpk INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T10:55:21.322Z 4140 TID-owyyp0fvk INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T10:55:21.610Z 4077 TID-oxovt2st0 ParseBusinessesWorker JID-e44e7adb6aeae458b362fb95 INFO: start
+before rest client
+next url: http://www.yelp.com/search?find_desc=&find_loc=&cflt=active&start=10
+image: //s3-media1.fl.yelpcdn.com/bphoto/iGdGriBxeQfuYjk8oBapRA/90s.jpg//s3-media1.fl.yelpcdn.com/photo/J2pMpOeGCb4JJPfLHkfN3Q/30s.jpg
+zip = 94107
+zip class = Fixnum
+hellooooo
+hello???
+??????????
+after exception
+2014-11-14T10:55:23.042Z 4077 TID-oxovt2st0 ParseBusinessesWorker JID-e44e7adb6aeae458b362fb95 INFO: done: 1.433 sec
+2014-11-14T10:58:11.356Z 4272 TID-owa5xzi7g INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T10:58:11.357Z 4272 TID-owa5xzi7g INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T10:58:11.357Z 4272 TID-owa5xzi7g INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T10:58:11.438Z 4272 TID-owa64x2z4 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T10:58:57.500Z 4306 TID-owmixebqk INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T10:58:57.500Z 4306 TID-owmixebqk INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T10:58:57.500Z 4306 TID-owmixebqk INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T10:58:57.574Z 4306 TID-owmj3zbcc INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:00:45.112Z 4348 TID-ovgj8cid4 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:00:45.113Z 4348 TID-ovgj8cid4 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:00:45.113Z 4348 TID-ovgj8cid4 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:00:45.188Z 4348 TID-ovgjcl0fc INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:01:11.013Z 4383 TID-ounq00dek INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:01:11.013Z 4383 TID-ounq00dek INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:01:11.014Z 4383 TID-ounq00dek INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:01:11.099Z 4383 TID-ounqu54eo INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:03:16.804Z 4453 TID-owx2rygo8 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:03:16.812Z 4453 TID-owx2rygo8 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:03:16.812Z 4453 TID-owx2rygo8 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:03:16.895Z 4453 TID-owx2si8q4 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:04:42.174Z 4496 TID-ow22ec5bs INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:04:42.175Z 4496 TID-ow22ec5bs INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:04:42.175Z 4496 TID-ow22ec5bs INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:04:42.256Z 4496 TID-ow22i41os INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:04:42.256Z 4496 TID-ow22eg22g INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:06:40.759Z 4539 TID-oxciocsmw INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:06:40.760Z 4539 TID-oxciocsmw INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:06:40.760Z 4539 TID-oxciocsmw INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:06:40.836Z 4539 TID-oxcis4x2g INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:06:40.837Z 4539 TID-oxciqtz44 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:07:39.318Z 4602 TID-ownx5chcw INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:07:39.318Z 4602 TID-ownx5chcw INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:07:39.319Z 4602 TID-ownx5chcw INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:07:39.394Z 4602 TID-ownx70zlk INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:08:03.040Z 4640 TID-ox28ecpuw INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:08:03.040Z 4640 TID-ox28ecpuw INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:08:03.040Z 4640 TID-ox28ecpuw INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:08:03.124Z 4640 TID-ox28cfr2c INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:09:29.369Z 4681 TID-oww5ospgo INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:09:29.377Z 4681 TID-oww5ospgo INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:09:29.377Z 4681 TID-oww5ospgo INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:09:29.465Z 4681 TID-oww5nv5dk INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:09:58.138Z 4718 TID-ouwj7m67s INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:09:58.146Z 4718 TID-ouwj7m67s INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:09:58.146Z 4718 TID-ouwj7m67s INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:09:58.217Z 4718 TID-ouwje87i8 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:11:12.147Z 4757 TID-oxgdc7vmw INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:11:12.155Z 4757 TID-oxgdc7vmw INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:11:12.155Z 4757 TID-oxgdc7vmw INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:11:12.233Z 4757 TID-oxgdmls6w INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:12:08.114Z 4825 TID-ovw1wms4g INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:12:08.114Z 4825 TID-ovw1wms4g INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:12:08.115Z 4825 TID-ovw1wms4g INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:12:08.180Z 4825 TID-ovw1zlmmc INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:12:08.181Z 4825 TID-ovw1x0r20 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:12:33.509Z 4924 TID-owuctxm94 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:12:33.517Z 4924 TID-owuctxm94 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:12:33.517Z 4924 TID-owuctxm94 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:12:33.591Z 4924 TID-owucybpno INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:12:54.774Z 4993 TID-owzh2g6p8 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:12:54.782Z 4993 TID-owzh2g6p8 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:12:54.782Z 4993 TID-owzh2g6p8 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:12:54.858Z 4993 TID-owzh32do0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:13:18.620Z 5030 TID-oxdno6z8o INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:13:18.627Z 5030 TID-oxdno6z8o INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:13:18.628Z 5030 TID-oxdno6z8o INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:13:18.707Z 5030 TID-oxdnxnifs INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:13:18.708Z 5030 TID-oxdnvt3ok INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:14:11.408Z 5067 TID-ounni40yo INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:14:11.416Z 5067 TID-ounni40yo INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:14:11.416Z 5067 TID-ounni40yo INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:14:11.506Z 5067 TID-ounnojoyo INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:14:28.316Z 5102 TID-oxoy85uxo INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:14:28.323Z 5102 TID-oxoy85uxo INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:14:28.324Z 5102 TID-oxoy85uxo INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:14:28.410Z 5102 TID-oxoyesty0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:14:28.411Z 5102 TID-oxoy5mcpg INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:16:53.417Z 5150 TID-owhufqw2w INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:16:53.418Z 5150 TID-owhufqw2w INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:16:53.418Z 5150 TID-owhufqw2w INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:16:53.531Z 5150 TID-owhuhs7tg INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:22:09.574Z 5404 TID-oximkf6r0 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:22:09.582Z 5404 TID-oximkf6r0 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:22:09.582Z 5404 TID-oximkf6r0 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:22:09.671Z 5404 TID-oximsk6fo INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:22:26.630Z 5440 TID-ouwgx7isc INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:22:26.638Z 5440 TID-ouwgx7isc INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:22:26.638Z 5440 TID-ouwgx7isc INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:22:26.731Z 5440 TID-ouwgyvip0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:22:26.731Z 5440 TID-ouwh25r6w INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:23:16.877Z 5507 TID-ovsoxjzlk INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:23:16.884Z 5507 TID-ovsoxjzlk INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:23:16.885Z 5507 TID-ovsoxjzlk INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:23:16.965Z 5507 TID-ovsp1kbv4 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:23:43.944Z 5540 TID-ouugkne94 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:23:43.952Z 5540 TID-ouugkne94 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:23:43.952Z 5540 TID-ouugkne94 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:23:44.035Z 5540 TID-ouugo7nq0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:24:24.988Z 5577 TID-owljotw54 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:24:24.995Z 5577 TID-owljotw54 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:24:24.995Z 5577 TID-owljotw54 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:24:25.100Z 5577 TID-owljpr6jw INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:24:25.100Z 5577 TID-owljr9pd0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:26:50.363Z 5623 TID-ovnr7s1yk INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:26:50.364Z 5623 TID-ovnr7s1yk INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:26:50.364Z 5623 TID-ovnr7s1yk INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:26:50.439Z 5623 TID-ovnr883is INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:26:50.440Z 5623 TID-ovnrayruo INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:27:42.676Z 5661 TID-ows6dmlls INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:27:42.684Z 5661 TID-ows6dmlls INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:27:42.684Z 5661 TID-ows6dmlls INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:27:42.764Z 5661 TID-ows6e0p6k INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:27:42.764Z 5661 TID-ows6gkfls INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:31:23.994Z 5776 TID-ovhzqpo0s INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:31:24.001Z 5776 TID-ovhzqpo0s INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:31:24.001Z 5776 TID-ovhzqpo0s INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:31:24.076Z 5776 TID-ovi0nbyok INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:35:25.691Z 5833 TID-oxa69ai8w INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:35:25.698Z 5833 TID-oxa69ai8w INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:35:25.699Z 5833 TID-oxa69ai8w INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:35:25.770Z 5833 TID-oxa6hd610 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:37:39.742Z 6008 TID-ouv31qi98 INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:37:39.750Z 6008 TID-ouv31qi98 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:37:39.750Z 6008 TID-ouv31qi98 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:37:39.821Z 6008 TID-ouv32tg4g INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:37:39.822Z 6008 TID-ouv31ufug INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:42:28.658Z 6073 TID-owkpq1qss INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:42:28.666Z 6073 TID-owkpq1qss INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:42:28.666Z 6073 TID-owkpq1qss INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:42:28.736Z 6073 TID-owkq1l9r0 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:43:34.936Z 6109 TID-ovxua0r8c INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:43:34.944Z 6109 TID-ovxua0r8c INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:43:34.944Z 6109 TID-ovxua0r8c INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:43:35.019Z 6109 TID-ovxumk6g8 INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:43:35.019Z 6109 TID-ovxucer6s INFO: Booting Sidekiq 3.2.6 with redis options {}
+2014-11-14T11:48:07.298Z 6216 TID-oxstni03c INFO: Running in ruby 2.1.1p76 (2014-02-24 revision 45161) [x86_64-darwin13.0]
+2014-11-14T11:48:07.306Z 6216 TID-oxstni03c INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2014-11-14T11:48:07.306Z 6216 TID-oxstni03c INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org/pro
+2014-11-14T11:48:07.378Z 6216 TID-oxstzy6vk INFO: Booting Sidekiq 3.2.6 with redis options {}

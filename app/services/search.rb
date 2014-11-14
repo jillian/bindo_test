@@ -1,17 +1,17 @@
 require 'rest_client'
 require 'nokogiri'
 
-RestClient.log =
-  Object.new.tap do |proxy|
-    def proxy.<<(message)
-      Rails.logger.info message
-    end
-  end
+# RestClient.log =
+#   Object.new.tap do |proxy|
+#     def proxy.<<(message)
+#       Rails.logger.info message
+#     end
+#   end
 
 class Search
 
   def locate_businesses
-    categories = ['active'] #store in seed file ... category.create()
+    categories = ['active']
       # ,'arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
 
     states = { CA: { "Los_Angeles" => [ 'Beverly_Hills']}}
@@ -42,7 +42,7 @@ class Search
             cookies = response.cookies
             cookie_formatted_city = city.gsub("_", "+")
             cookies["location"] = "%7B%22city%22%3A+%22#{cookie_formatted_city}%22%2C+%22zip%22%3A+%22%22%2C+%22country%22%3A+%22US%22%2C+%22address2%22%3A+%22%22%2C+%22address3%22%3A+%22%22%2C+%22state%22%3A+%22CA%22%2C+%22address1%22%3A+%22%22%2C+%22unformatted%22%3A+%22#{cookie_formatted_city}%2C+CA%22%7D"
-            puts "cookie class: #{cookies.class}"
+            # puts "cookie class: #{cookies.class}"
 
             ParseBusinessesWorker.perform_async(url, cookies, cookie_formatted_city, category)
           end
@@ -52,5 +52,3 @@ class Search
 
   end
 end
-
-

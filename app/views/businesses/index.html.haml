@@ -7,23 +7,26 @@
         %tbody
           %tr
             %th Name
-            %th Image
+            %th Address
+            %th City
+            %th Zipcode
             %th Category
             %th Latitude
             %th Longitude
-            %th Zipcode
-            %th Address
-            %th City
+            
+            
+            
+            %th Image
           - @businesses.each do |business|
             %tr
               %td= business.name 
-              %td= business.image 
+              %td= business.address 
+              %td= business.city 
+              %td= business.zipcode 
               %td= business.category 
               %td= business.latitude 
               %td= business.longitude 
-              %td= business.zipcode 
-              %td= business.address 
-              %td= business.city 
+              %td= business.image 
               %td= link_to 'Show', business
               %td= link_to 'Delete', business, :method => :delete, :data => { :confirm => 'Are you sure?' } 
 

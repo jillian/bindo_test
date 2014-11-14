@@ -16,13 +16,32 @@
 
 /* #Site Styles
 ================================================== */
+#nav {
+    margin: 13px 0 0 0;
+}
+
 nav ul li { 
 	float:left;
 	padding: 10px;
+	display: inline;
+  margin: 0 20px 0 0;
+  margin-bottom: 130px;
+}
+
+
+#nav a {
+    text-decoration: none;
+}
+ 
+#nav a:hover {
+    text-decoration: underline;
 }
 
 a.hamburger{
 	display:none;
+}
+.container {
+    margin-top: 50px;
 }
 
 /* #Page Styles
