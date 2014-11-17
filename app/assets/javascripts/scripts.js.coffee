@@ -7,13 +7,29 @@ $(document).ready ->
 
   map = L.mapbox.map('map', 'jmac8424.k6lb8hf1', scrollWheelZoom: false).setView([34.0500, -118.2500], 14)
 
+# test marker point:
+  L.mapbox.featureLayer(
+    type: "Feature",
+    geometry:
+      type: "Point"
+      coordinates: [
+        34.0771354,
+        -118.2634681
+      ],
+    properties:
+      title: "CrossFit Sunset"
+      description: "1030 N Alvarado St, Los Angeles, CA"
+      "marker-size": "large"
+      "marker-color": "#fff"
+    ).addTo map
+
 
   # get JSON object
   # on success, parse it and
   # hand it over to MapBox for mapping
   $.ajax
   dataType: 'text'
-  url: '.json'
+  url: '/businesses.json'
   success: (data) ->
     geojson = $.parseJSON(data)
     map.featureLayer.setGeoJSON(geojson)

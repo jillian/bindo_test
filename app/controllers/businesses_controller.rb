@@ -5,34 +5,31 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all.includes(:location, :category)
-
-    # @businesses.each do |business|
-    #   @json << business.to_json
-    # end
-
-    # render :json => @businesses, :include => [:category, :location]
     
+    @geojson = Array.new
+    @businesses.each do |business|
+      x = business.location.latitude if business.location.present?
+      y = business.location.longitude if business.location.present?
+
+      @geojson << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [x, y]
+        },
+        properties: {
+          name: business.name,
+          address: business.address,
+          :'marker-color' => '#00607d',
+          :'marker-symbol' => 'circle',
+          :'marker-size' => 'medium'
+        }
+      }
+    end
+
+
     respond_to do |format|
       format.html
-
-      @geojson = Array.new
-
-      @businesses.each do |business|
-        @geojson << {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            # coordinates: [business.to_json.location.longitude, business.to_json.location.latitude]
-          },
-          properties: {
-            name: business.name,
-            address: business.address,
-            :'marker-color' => '#00607d',
-            :'marker-symbol' => 'circle',
-            :'marker-size' => 'medium'
-          }
-        }
-      end
 
       format.json { render json: @businesses, :include => 
         [
@@ -76,6 +73,8 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :image, :category, :latitude, :longitude, :zipcode, :address, :city, :data_key_id, :integer)
+      params.require(:business).permit(:name, :image, :zipcode, :address,
+        category_attributes: [:name],  
+        location_attributes:[:latitude, :longitude])
     end
 end
