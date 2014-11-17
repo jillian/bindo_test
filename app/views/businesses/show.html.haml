@@ -1,0 +1,9 @@
+%h1= business.name
+
+%h4= business.address 
+%h4= business.city 
+%h4= business.zipcode 
+%h4= business.category.name 
+%h4= business.location.latitude if business.location.present?
+%h4= business.location.longitude if business.location.present?
+%h4= image_tag business.image, style: "width:50px;"
