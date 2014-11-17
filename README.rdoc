@@ -2,4 +2,7 @@
 
 To run the scrape, run rails server and then go to localhost:3000/search
 
+Monday, 17 Nov - adding map functionality
+
 ** Note - You still have to manually enter in the location data (/app/services/search.rb:9). Working on scraping location options and eventually to add in a search and/or using Mechanize to allow for searching
+
