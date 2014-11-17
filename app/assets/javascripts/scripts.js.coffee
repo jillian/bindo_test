@@ -1,7 +1,8 @@
 $(document).ready ->
 
-  map = L.mapbox.map('map', 'jmac8424.k6lb8hf1', scrollWheelZoom: false).setView([45.52086, -122.679523], 14)
+  map = L.mapbox.map('map', 'jmac8424.k6lb8hf1', scrollWheelZoom: false).setView([34.0500, -118.2500], 14)
 
+  118.2500
   # get JSON object
   # on success, parse it and
   # hand it over to MapBox for mapping
