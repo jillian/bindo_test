@@ -4,8 +4,8 @@ require 'nokogiri'
 class Search
 
   def locate_businesses
-    categories = ['active']
-      # ,'arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
+    categories = ['active','arts']
+      # ,'auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
 
     states = { CA: { "Los_Angeles" => [ 'Beverly_Hills']}}
       # , 'Burbank', 'Culver_City', 'Downtown', 'Encino', 'Glendale', 'Hollywood', 'Koreatown', 'North_Hollywood', 'Pasadena', 'Redondo_Beach', 'Santa_Monica', 'Sherman_Oaks', 'Torrance', 'West_Hollywood', 'West_Los_Angeles' ] } }
@@ -18,9 +18,11 @@ class Search
 
               # find main("\w*") and string parse for unique ID:
               html_page = Nokogiri::HTML(initial_page_request)
+              binding.pry
               scripts = html_page.css('script').map(&:text)
               parent_request_id = scripts.map do |script|
-                script.match(/main\(\"\w*\"\)/).to_s
+                a = script.match(/main\(\"\w*\"\)/).to_s
+                puts "a = #{a}"
               end.reject!(&:empty?).first.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
 
               formatted_city_with_state = "#{city.gsub("_", "%20")},%20#{state}"

@@ -39,7 +39,7 @@ class ParseBusinessesWorker
               image: image,
               category: Category.new({name: category})
             })
-
+            puts "hellloooooo *********************"
 
             map_results = results["search_map"]["markers"]
             loc = map_results[data_key.to_s] if map_results.has_key?(data_key.to_s)
@@ -48,7 +48,6 @@ class ParseBusinessesWorker
               business.save
             end
 
-            puts "results #{business.inspect}" 
           end
         end
       end

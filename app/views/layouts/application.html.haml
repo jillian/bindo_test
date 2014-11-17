@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %title ScrapeYelpBindo
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.map", "type:" => ""}
+    %script{:src => "http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js"}
+    %link{:href => "https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css", :rel => "stylesheet"}/
+    / %script{ map = L.mapbox.map('yelp_scrape', 'jmac8424.k6lb8hf1', scrollWheelZoom: false).setView([45.52086, -122.679523], 14)}
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    :css
+      body { margin:0; padding:0; }
+      #map { position:absolute; display:block; top:0; bottom:0; width:100%; height: 400px}
+  %body
+    .container
+      .sixteen.columns
+        %a.hamburger Menu
+        %nav.clearfix
+          %ul
+            %li
+              %h1 Scraping Yelp
+            %li
+              %a{:href => ""} Map
+            %li
+              %a{:href => ""} Categories
+            %li
+              %a{:href => ""} State
+            %li
+              %a{:href => ""} Neighborhood>
+      %div{:style => "width: 800px;"}
+        #map.clearfix{:style => "width: 800px; height: 400px;"}
+      / %script{ map = L.mapbox.map('yelp_scrape', 'jmac8424.k6lb8hf1', scrollWheelZoom: false).setView([45.52086, -122.679523], 14)}

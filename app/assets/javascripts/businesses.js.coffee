@@ -18,10 +18,6 @@ $(document).ready ->
   properties = marker.feature.properties
 
   # *************** TO DO ******
-#   L.mapbox.map('map-three', 'examples.map-i86l3621', {
-#     scrollWheelZoom: false
-# }).setView([38.8929,-77.0252], 14);
-
   # create custom popup
   popupContent =  '<div class="popup">' +
                     '<h3>' + properties.name + '</h3>' +
