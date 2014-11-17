@@ -20,15 +20,14 @@
           %ul
             %li
               %h1 Scraping Yelp
-            %li
-              %a{:href => ""} Map
-            %li
-              %a{:href => ""} Categories
-            %li
-              %a{:href => ""} State
-            %li
-              %a{:href => ""} Neighborhood>
-      %div{:style => "width: 800px;"}
-        #map.clearfix{:style => "width: 800px; height: 400px;"}
+            / %li
+            /   %a{:href => ""} Map
+            / %li
+            /   %a{:href => ""} Categories
+            / %li
+            /   %a{:href => ""} State
+            / %li
+            /   %a{:href => ""} Neighborhood>
+        #map.clearfix
       =yield  
       / %script{ map = L.mapbox.map('yelp_scrape', 'jmac8424.k6lb8hf1', scrollWheelZoom: false).setView([45.52086, -122.679523], 14)}
