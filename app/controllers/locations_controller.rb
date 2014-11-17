@@ -24,7 +24,8 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = Location.new(location_params)
+    @business = Business.find_by(:id_token => params[:business])
+    @location = @building.location.create(params[:location])
 
     respond_to do |format|
       if @location.save

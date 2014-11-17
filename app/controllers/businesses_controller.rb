@@ -4,17 +4,24 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
-    @businesses = Business.all
+    @businesses = Business.all.includes(:location, :category)
 
-    @json = Array.new
+    # @json = Array.new
 
-    @businesses.each do |business|
-      @json << business.to_json
-    end
+    # @businesses.each do |business|
+    #   @json << business.to_json
+    # end
+
+    # render :json => @businesses, :include => [:category, :location]
     
     respond_to do |format|
       format.html
-      format.json { render json: @json }  # respond with the created JSON object
+      format.json { render json: @businesses, :include => 
+        [
+        :location =>{:only => [:latitude, :longitude]}, 
+        :category =>{:only => [:name]}  
+        ]
+      }
     end
   end
 

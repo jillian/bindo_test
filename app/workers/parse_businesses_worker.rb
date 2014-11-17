@@ -21,10 +21,10 @@ class ParseBusinessesWorker
           img_node = element.css('.media-avatar img:first')
           image = img_node.xpath("@*[starts-with(name(), 'src')]").text
           data_key = element.xpath("@*[starts-with(name(), 'data-key')]").text.to_i
-          address = element.css('.secondary-attributes address:first').text
+          full_address = element.css('.secondary-attributes address:first').first.children
 
-          binding.pry
-          zipcode = address.split(' ')[-1].to_i
+          street_address = full_address.first.text.strip #address is a nokogiri nodeset with one node.
+          zipcode = full_address[2].text.split(' ')[-1].to_i
           if zipcode.to_i.is_a?(Integer)
             zipcode = zipcode
           end
@@ -34,7 +34,7 @@ class ParseBusinessesWorker
           if exists.size <= 0
             business = Business.create({
               name: name,
-              address: address,
+              address: street_address,
               zipcode: zipcode,
               city: city_name,
               state: state,

@@ -4,7 +4,8 @@ require 'nokogiri'
 class Search
 
   def locate_businesses
-    categories = ['active','arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
+    # 'active',
+    categories = ['arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
 
     states = { CA: { "Los_Angeles" => [ 'Beverly_Hills', 'Burbank', 'Culver_City', 'Downtown', 'Encino', 'Glendale', 'Hollywood', 'Koreatown', 'North_Hollywood', 'Pasadena', 'Redondo_Beach', 'Santa_Monica', 'Sherman_Oaks', 'Torrance', 'West_Hollywood', 'West_Los_Angeles' ] } }
     #todo: each state/city can be it's own sidekiq worker
@@ -17,9 +18,13 @@ class Search
               # find main("\w*") and string parse for unique ID:
               html_page = Nokogiri::HTML(initial_page_request)
               scripts = html_page.css('script').map(&:text)
-              parent_request_id = scripts.map do |script|
-                script.match(/main\(\"\w*\"\)/).to_s
-              end.delete_if(&:empty?).last.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
+              begin  
+                parent_request_id = scripts.map do |script|
+                  script.match(/main\(\"\w*\"\)/).to_s
+                end.delete_if(&:empty?).last.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
+              rescue => e
+                logger.warn "Unable to get parent_request_id, will ignore: #{e}" 
+              end
   
               # hack-y, ugly temporary fix:
               # parent_request_id = scripts[12].match(/main\(\"\w*\"\)/).to_s.scan(/\(([^\)]+)\)/)[0][0].scan(/\w*/)[1]
