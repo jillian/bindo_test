@@ -16,11 +16,9 @@ class Search
 
               # find main("\w*") and string parse for unique ID:
               html_page = Nokogiri::HTML(initial_page_request)
-              binding.pry
               scripts = html_page.css('script').map(&:text)
               parent_request_id = scripts.map do |script|
-                a = script.match(/main\(\"\w*\"\)/).to_s
-                puts "a = #{a}"
+                script.match(/main\(\"\w*\"\)/).to_s
               end.reject!(&:empty?).first.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
 
               formatted_city_with_state = "#{city.gsub("_", "%20")},%20#{state}"
