@@ -22,6 +22,8 @@ class ParseBusinessesWorker
           image = img_node.xpath("@*[starts-with(name(), 'src')]").text
           data_key = element.xpath("@*[starts-with(name(), 'data-key')]").text.to_i
           address = element.css('.secondary-attributes address:first').text
+
+          binding.pry
           zipcode = address.split(' ')[-1].to_i
           if zipcode.to_i.is_a?(Integer)
             zipcode = zipcode

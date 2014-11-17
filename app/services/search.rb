@@ -17,12 +17,12 @@ class Search
               # find main("\w*") and string parse for unique ID:
               html_page = Nokogiri::HTML(initial_page_request)
               scripts = html_page.css('script').map(&:text)
-              # parent_request_id = scripts.map do |script|
-              #   script.match(/main\(\"\w*\"\)/).to_s
-              # end.reject!(&:empty?).first.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
+              parent_request_id = scripts.map do |script|
+                script.match(/main\(\"\w*\"\)/).to_s
+              end.delete_if(&:empty?).last.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
   
               # hack-y, ugly temporary fix:
-              parent_request_id = scripts[11].match(/main\(\"\w*\"\)/).to_s.scan(/\(([^\)]+)\)/)[0][0].scan(/\w*/)[1]
+              # parent_request_id = scripts[12].match(/main\(\"\w*\"\)/).to_s.scan(/\(([^\)]+)\)/)[0][0].scan(/\w*/)[1]
           
               formatted_city_with_state = "#{city.gsub("_", "%20")},%20#{state}"
               url = "http://www.yelp.com/search/snippet?find_desc&find_loc=#{formatted_city_with_state}&start=20&cflt=active&parent_request_id=#{parent_request_id}&request_origin=user"
