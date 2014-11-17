@@ -11,7 +11,11 @@ class BusinessesController < ApplicationController
     @businesses.each do |business|
       @json << business.to_json
     end
-    Business.by_category(params[:category]) if params.has_key?(:category)
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @json }  # respond with the created JSON object
+    end
   end
 
   def filter
