@@ -5,13 +5,16 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all.includes(:location, :category)
-    
-    @geojson = Array.new
-    @businesses.each do |business|
+   
+  end
+  def get_markers  
+    businesses = Business.all.includes(:location, :category)
+    geojson = Array.new
+    businesses.each do |business|
       x = business.location.latitude if business.location.present?
       y = business.location.longitude if business.location.present?
 
-      @geojson << {
+      geojson << {
         type: 'Feature',
         geometry: {
           type: 'Point',
@@ -20,6 +23,7 @@ class BusinessesController < ApplicationController
         properties: {
           name: business.name,
           address: business.address,
+          :category => business.category,
           :'marker-color' => '#00607d',
           :'marker-symbol' => 'circle',
           :'marker-size' => 'medium'
@@ -27,18 +31,7 @@ class BusinessesController < ApplicationController
       }
     end
 
-
-    respond_to do |format|
-      format.html
-
-      format.json { render json: @businesses, :include => 
-        [
-        :location =>{:only => [:latitude, :longitude]}, 
-        :category =>{:only => [:name]}  
-        ]
-      }
-      end
-
+    render json: geojson
 
   end
 

@@ -5,14 +5,15 @@ Rails.application.routes.draw do
 
   resources :locations
 
-  # resources :search, only: [:run] 
-  # # do
-    get '/search', to: 'search#run'
-  # end
+
+  get '/search', to: 'search#run'
+
 
   
 
-  resources :businesses, only: [ :index, :show, :delete ]
+  resources :businesses, only: [ :index, :show, :delete ] do 
+    get :get_markers, on: :collection
+  end
 
   root 'businesses#index'
 end
