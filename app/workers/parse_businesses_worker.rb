@@ -29,7 +29,7 @@ class ParseBusinessesWorker
             zipcode = zipcode
           end
           city_name = city.gsub("%20", " ")
-          state = address.split(' ')[-2]
+          state = full_address.split(' ')[-2]
           exists = Business.where(name: name, address: address)
           if exists.size <= 0
             business = Business.create({

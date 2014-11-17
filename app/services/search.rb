@@ -21,9 +21,9 @@ class Search
               begin  
                 parent_request_id = scripts.map do |script|
                   script.match(/main\(\"\w*\"\)/).to_s
-                end.delete_if(&:empty?).last.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
+                end.reject!(&:empty?).last.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
               rescue => e
-                logger.warn "Unable to get parent_request_id, will ignore: #{e}" 
+                Rails.logger.warn "Unable to get parent_request_id, will ignore: #{e}" 
               end
   
               # hack-y, ugly temporary fix:

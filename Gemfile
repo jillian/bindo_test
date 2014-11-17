@@ -33,6 +33,8 @@ gem 'pry'
 gem 'whenever', :require => false
 gem 'mechanize'
 gem 'kaminari'
+gem 'rgeo-geojson'
+gem 'rgeo'
 
 
 # Use ActiveModel has_secure_password

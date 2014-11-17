@@ -6,8 +6,6 @@ class BusinessesController < ApplicationController
   def index
     @businesses = Business.all.includes(:location, :category)
 
-    # @json = Array.new
-
     # @businesses.each do |business|
     #   @json << business.to_json
     # end
@@ -16,13 +14,35 @@ class BusinessesController < ApplicationController
     
     respond_to do |format|
       format.html
+
+      @geojson = Array.new
+
+      @businesses.each do |business|
+        @geojson << {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            # coordinates: [business.to_json.location.longitude, business.to_json.location.latitude]
+          },
+          properties: {
+            name: business.name,
+            address: business.address,
+            :'marker-color' => '#00607d',
+            :'marker-symbol' => 'circle',
+            :'marker-size' => 'medium'
+          }
+        }
+      end
+
       format.json { render json: @businesses, :include => 
         [
         :location =>{:only => [:latitude, :longitude]}, 
         :category =>{:only => [:name]}  
         ]
       }
-    end
+      end
+
+
   end
 
   def filter
