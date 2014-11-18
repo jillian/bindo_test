@@ -5,7 +5,8 @@ class Search
 
   def locate_businesses
     # 'active',
-    categories = ['arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
+    categories = ['arts','auto']
+      # ,'beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
 
     states = { CA: { "Los_Angeles" => [ 'Beverly_Hills', 'Burbank', 'Culver_City', 'Downtown', 'Encino', 'Glendale', 'Hollywood', 'Koreatown', 'North_Hollywood', 'Pasadena', 'Redondo_Beach', 'Santa_Monica', 'Sherman_Oaks', 'Torrance', 'West_Hollywood', 'West_Los_Angeles' ] } }
     #todo: each state/city can be it's own sidekiq worker
@@ -23,7 +24,7 @@ class Search
                   script.match(/main\(\"\w*\"\)/).to_s
                 end.reject!(&:empty?).last.scan(/\(([^\)]+)\)/).last.first.scan(/\w*/)[1]
               rescue => e
-                Rails.logger.warn "Unable to get parent_request_id, will ignore: #{e}" 
+                Rails.logger.warn "Unable to get parent_request_id: #{e}" 
               end
   
               # hack-y, ugly temporary fix:

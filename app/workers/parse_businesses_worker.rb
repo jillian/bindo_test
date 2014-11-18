@@ -29,7 +29,7 @@ class ParseBusinessesWorker
             zipcode = zipcode
           end
           city_name = city.gsub("%20", " ")
-          state = full_address.split(' ')[-2]
+          state = full_address.text.split(' ')[-2]
           exists = Business.where(name: name, address: address)
           if exists.size <= 0
             business = Business.create({
@@ -41,7 +41,6 @@ class ParseBusinessesWorker
               image: image,
               category: Category.new({name: category})
             })
-            puts "hellloooooo *********************"
 
             map_results = results["search_map"]["markers"]
             loc = map_results[data_key.to_s] if map_results.has_key?(data_key.to_s)
