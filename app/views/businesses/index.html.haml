@@ -11,7 +11,7 @@
       %th Category
       %th Latitude
       %th Longitude     
-      %th Image
+      / %th Image
     - @businesses.each do |business|
       %tr
         %td= business.id
@@ -22,8 +22,8 @@
         %td= business.category.name 
         %td= business.location.latitude if business.location.present?
         %td= business.location.longitude if business.location.present?
-        %td= image_tag business.image, style: "width:50px;"
+        / %td= #image_tag business.image, style: "width:50px;"
 
-        %td= link_to 'Show', business
-        %td= link_to 'Delete', business, :method => :delete, :data => { :confirm => 'Are you sure?' } 
+//:javascript
+//  window.businesses = #{@businesses.to_json}
       

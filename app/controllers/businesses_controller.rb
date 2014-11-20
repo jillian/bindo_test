@@ -1,35 +1,48 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
-
-  # GET /businesses
-  # GET /businesses.json
+  respond_to :html, :json
   def index
+    # @businesses = Business.where(available: true)
+
     @businesses = Business.all.includes(:location, :category)
-   
+    respond_with @businesses
   end
+  
   def get_markers  
     businesses = Business.all.includes(:location, :category)
-    geojson = Array.new
-    businesses.each do |business|
-      x = business.location.latitude if business.location.present?
-      y = business.location.longitude if business.location.present?
-
-      geojson << {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [x, y]
-        },
-        properties: {
-          name: business.name,
-          address: business.address,
-          :category => business.category,
-          :'marker-color' => '#00607d',
-          :'marker-symbol' => 'circle',
-          :'marker-size' => 'medium'
+    geojson = {
+          "type" => "FeatureCollection",
+          "features" => []
         }
-      }
+    businesses.each do |business|   
+      if business.location.present?
+        x = business.location.latitude 
+        y = business.location.longitude
+        puts "lat long = #{x}, #{y}"
+
+        geojson["features"] << {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [x, y]
+          },
+          properties: {
+            name: business.name,
+            address: business.address,
+            category: business.category.name,
+            image: business.image,
+            :'marker-color' => '#00607d',
+            :'marker-symbol' => 'circle',
+            :'marker-size' => 'medium'
+          }
+        }
+      else
+        puts "no lat/long"
+      end
     end
+    puts "#{geojson.class}"
+    puts "#{geojson.inspect}"
+
 
     render json: geojson
 

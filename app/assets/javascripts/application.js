@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 // require underscore-min
+// require mapbox.js
 // require_tree .
 

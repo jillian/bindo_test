@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   
 
-  resources :businesses, only: [ :index, :show, :delete ] do 
-    get :get_markers, on: :collection
-  end
+  resources :businesses, only: [ :index ]
+  # do 
+  #   get :get_markers, on: :collection
+  # end
 
   root 'businesses#index'
 end

@@ -7,18 +7,9 @@ class LocationsController < ApplicationController
     @locations = Location.all
   end
 
-  # GET /locations/1
-  # GET /locations/1.json
-  def show
-  end
-
   # GET /locations/new
   def new
     @location = Location.new
-  end
-
-  # GET /locations/1/edit
-  def edit
   end
 
   # POST /locations
