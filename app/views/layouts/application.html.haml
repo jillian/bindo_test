@@ -20,24 +20,23 @@
       #map-canvas {position:relative; display:block; top:0; bottom:0; width:100%; height: 400px}
 
   %body
-    .container
-      .sixteen.columns
-        %a.hamburger Menu
-        %nav.clearfix
-          %ul
-            %li
-              %h1 Scraping Yelp
-            / %li
-            /   %a{:href => ""} Map
-            / %li
-            /   %a{:href => ""} Categories
-            / %li
-            /   %a{:href => ""} State
-            / %li
-            /   %a{:href => ""} Neighborhood>
-        #map-canvas.clearfix
-        #map2.clearfix
-        #map.clearfix
+  #map.clearfix
+  .container
+    .sixteen.columns
+      %a.hamburger Menu
+      %nav.clearfix
+        %ul
+          %li
+            %h1 Scraping Yelp
+          / %li
+          /   %a{:href => ""} Map
+          / %li
+          /   %a{:href => ""} Categories
+          / %li
+          /   %a{:href => ""} State
+          / %li
+          /   %a{:href => ""} Neighborhood>
+
         
         =yield
 
