@@ -36,7 +36,7 @@ class Search
               # parent_request_id = scripts[12].match(/main\(\"\w*\"\)/).to_s.scan(/\(([^\)]+)\)/)[0][0].scan(/\w*/)[1]
           
             formatted_city_with_state = "#{neighborhood.gsub("_", "%20")}%20#{city.gsub("_", "%20")},%20#{state}"
-            url = "http://www.yelp.com/search/snippet?find_desc&find_loc=#{formatted_city_with_state}&start=20&cflt=active&parent_request_id=#{parent_request_id}&request_origin=user"
+            url = "http://www.yelp.com/search/snippet?find_desc&find_loc=#{formatted_city_with_state}&start=20&cflt=#{category}&parent_request_id=#{parent_request_id}&request_origin=user"
 
             #   puts "end of search/start of parse_biz_worker"
 
