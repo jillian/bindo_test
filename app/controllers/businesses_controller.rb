@@ -25,6 +25,7 @@ class BusinessesController < ApplicationController
               address: business.address,
               category: business.category.name,
               image: business.image,
+              zipcode: business.zipcode,
               :'marker-color' => map_color_by_category(business.category.name), # '#00607d',
               :'marker-symbol' => 'circle',
               :'marker-size' => 'medium'
@@ -83,12 +84,50 @@ class BusinessesController < ApplicationController
     end
 
     def map_color_by_category category
-      color = '#000000'
       case category
       when 'active'
         color ='#FF0000'
       when 'arts'
         color = '#E80C7A'
+      when 'auto'
+        color = '#6A7287'
+      when 'beautysvc'
+        color = '#0A8CFF'
+      when 'education'
+        color = '#16FFF1'
+      when 'financialservices'
+        color= '#09E89B'
+      when 'food'
+        color='#0AFF65'
+      when 'health'
+        color='#FF0A80'
+      when 'homeservices'
+        color= '#B609E8'
+      when 'hotelstravel'
+        color ='#7A38E8'
+      when 'localflavor'
+        color ='#FFF50E'
+      when 'localservices'
+        color = '#CE02FF'
+      when 'massmedia'
+        color='#20E840'
+      when 'nightlife'
+        color ='#000'
+      when 'pets'
+        color ='#02FF2C'
+      when 'professional'
+        color ='#C607FF'
+      when 'publicservicesgovt'
+        color ='#E87D1F'
+      when 'realestate'
+        color ='#FFF50E'
+      when 'religiousorgs'
+        color ='#0C72FF'
+      when 'restaurants'
+        color ='#A83EFF'
+      when 'shopping'
+        color ='#42E8B4'
+
       end
       color
     end
