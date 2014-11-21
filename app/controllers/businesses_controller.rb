@@ -4,45 +4,43 @@ class BusinessesController < ApplicationController
   def index
     # @businesses = Business.where(available: true)
 
-    @businesses = Business.all.includes(:location, :category)
+    @businesses = Business.all.includes(:location, :category).page(params[:page])
     respond_with @businesses
   end
-  
-  def get_markers  
-    businesses = Business.all.includes(:location, :category)
+
+  def get_markers
+    businesses = Business.includes(:location, :category).all
+    Rails.logger.error("Business: #{businesses}")
     geojson = {
           "type" => "FeatureCollection",
           "features" => []
         }
-    businesses.each do |business|   
-      if business.location.present?
-        x = business.location.latitude 
-        y = business.location.longitude
-        puts "lat long = #{x}, #{y}"
-
-        geojson["features"] << {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [x, y]
-          },
-          properties: {
-            name: business.name,
-            address: business.address,
-            category: business.category.name,
-            image: business.image,
-            :'marker-color' => '#00607d',
-            :'marker-symbol' => 'circle',
-            :'marker-size' => 'medium'
+    if businesses.size > 0
+      businesses.each do |business|
+        if business.location.present?
+          geojson["features"] << {
+            type: 'Feature',
+            properties: {
+              title: business.name,
+              address: business.address,
+              category: business.category.name,
+              image: business.image,
+              :'marker-color' => map_color_by_category(business.category.name), # '#00607d',
+              :'marker-symbol' => 'circle',
+              :'marker-size' => 'medium'
+            },
+            geometry: {
+              type: 'Point',
+              coordinates: [business.location.longitude, business.location.latitude]
+            }
           }
-        }
-      else
-        puts "no lat/long"
+        else
+          Rails.logger.error("no lat/long")
+        end
       end
+    else
+      Rails.logger.error("Size is 0")
     end
-    puts "#{geojson.class}"
-    puts "#{geojson.inspect}"
-
 
     render json: geojson
 
@@ -80,7 +78,16 @@ class BusinessesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
       params.require(:business).permit(:name, :image, :zipcode, :address,
-        category_attributes: [:name],  
+        category_attributes: [:name],
         location_attributes:[:latitude, :longitude])
+    end
+
+    def map_color_by_category category
+      color = '#000000'
+      case category
+      when 'active'
+        color ='#FF0000'
+      end
+      color
     end
 end

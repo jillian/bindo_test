@@ -1,5 +1,5 @@
 %h3.remove-bottom{:style => "margin-top: 40px"} Businesses
-%h5 Looking at LA
+%h5 Looking at LA/Active
 %table{class: 'table table-striped table-hover', name: "t"}
   %tbody
     %tr
@@ -10,20 +10,16 @@
       %th Zipcode
       %th Category
       %th Latitude
-      %th Longitude     
-      / %th Image
+      %th Longitude
+      %th Image
     - @businesses.each do |business|
       %tr
         %td= business.id
-        %td= business.name 
-        %td= business.address 
-        %td= business.city 
-        %td= business.zipcode 
-        %td= business.category.name 
+        %td= business.name
+        %td= business.address
+        %td= business.city
+        %td= business.zipcode
+        %td= business.category.name if business.category.present?
         %td= business.location.latitude if business.location.present?
         %td= business.location.longitude if business.location.present?
-        / %td= #image_tag business.image, style: "width:50px;"
-
-//:javascript
-//  window.businesses = #{@businesses.to_json}
-      
+        %td= #image_tag business.image, style: "width:50px;"

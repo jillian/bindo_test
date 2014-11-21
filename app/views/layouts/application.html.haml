@@ -5,10 +5,9 @@
     %link{:href => "https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css", :rel => "stylesheet"}
     %script{:src => "http://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js"}
 
-    %link{:href => "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css", :rel => "stylesheet"} 
-    %script{:src =>"http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"}
-
-    %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyB2psAtV0kSS4iI-wtwZK0ZW2PiGksmkz0"}
+    %script{ :src => 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'}
+    %link{ :href => 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css', :rel => 'stylesheet'}
+    %link{ :href => 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css', :rel => 'stylesheet'}
 
     = stylesheet_link_tag    "application", :media => "all"
     = csrf_meta_tags
@@ -16,101 +15,100 @@
     :css
       body { margin:0; padding:0; }
       #map { position:relative; display:block; top:0; bottom:0; width:100%; height: 400px}
-      #map2 {position:relative; display:block; top:0; bottom:0; width:100%; height: 400px}
-      #map-canvas {position:relative; display:block; top:0; bottom:0; width:100%; height: 400px}
 
   %body
-  #map.clearfix
-  .container
-    .sixteen.columns
-      %a.hamburger Menu
-      %nav.clearfix
-        %ul
-          %li
-            %h1 Scraping Yelp
-          / %li
-          /   %a{:href => ""} Map
-          / %li
-          /   %a{:href => ""} Categories
-          / %li
-          /   %a{:href => ""} State
-          / %li
-          /   %a{:href => ""} Neighborhood>
+    .container
+      .sixteen.columns
+        %a.hamburger Menu
+        %nav.clearfix
+          %ul
+            %li
+              %h1 Scraping Yelp
+            / %li
+            /   %a{:href => ""} Map
+            / %li
+            /   %a{:href => ""} Categories
+            / %li
+            /   %a{:href => ""} State
+            / %li
+            /   %a{:href => ""} Neighborhood
+        %nav.clearfix
+          %ul
+            %li
+              %a.zoom{ href: '#', data: { zoom: 5 } }
+                Zoom A
+            %li
+              %a.zoom{ href: '#', data: { zoom: 8 } }
+                Zoom B
+            %li
+              %a.zoom{ href: '#', data: { zoom: 11 } }
+                Zoom C
+        #map.clearfix
 
-        
         =yield
 
         :javascript
-          //INITIALIZE
-          style_array = [{"featureType":"water","stylers":[{"color":"#021019"}]},{"featureType":"landscape","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"transit","stylers":[{"color":"#146474"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]}];
-          function initialize() {
-            var mapOptions = {
-              center: { lat: 34.050, lng: -118.250},
-              zoom: 8,
-              scrollwheel: false,
-              styles: style_array
-            };
-            var map = new google.maps.Map(document.getElementById('map-canvas'),
-              mapOptions);
+          var src = 'https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js';
+          L.mapbox.accessToken = 'pk.eyJ1IjoiZ3JhbSIsImEiOiJvNWFZbEowIn0.PtGgBqvt4OSBIw3iJp0NXQ';
 
-            var myLatlng = new google.maps.LatLng(34.050,-118.250);
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                title:"I'm the center of the map!"
+          var map = L.mapbox.map('map')
+            .setView([34.0500, -118.2500], 14);
+
+          var myLayer = L.mapbox.featureLayer().addTo(map);
+
+          $.get('/businesses/get_markers.json', function(response) {
+            myLayer.setGeoJSON(response);
+          });
+
+          // Add custom popup html to each marker.
+          myLayer.on('layeradd', function(e) {
+              var marker = e.layer;
+              var feature = marker.feature;
+              var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+                                      '<h2>' + feature.properties.title + '</h2>' +
+                                      '<div class="details">' +
+                                          '<img src="' + feature.properties.image + '">' +
+                                          '<address>' + feature.properties.address + '</address>' +
+                                      '</div>' +
+                                  '</div>';
+
+              marker.bindPopup(popupContent,{
+                  closeButton: false,
+                  minWidth: 320
               });
-            
-            var geojson_data = $.get('/businesses');
-            console.log(geojson_data)
+          });
 
-            // Load a GeoJSON object
-            map.data.loadGeoJson('/businesses/get_markers.json');
-
-            function createMarkerForBusiness(business){
-              var latLng = new google.maps.LatLng(business.location.latitude, business.location.longitude);
-              var position_marker;
-
-              if(position_marker != undefined) position_marker.setMap(null);
-              position_marker = new google.maps.Marker({
-                position: latLng,
-                map: map,
-                title: business.name
+          // Since featureLayer is an asynchronous method, we use the `.on('ready'`
+          // call to only use its marker data once we know it is actually loaded.
+          L.mapbox.featureLayer('jmac8424.k9926mgl').on('ready', function(e) {
+              // The clusterGroup gets each marker in the group added to it
+              // once loaded, and then is added to the map
+              var clusterGroup = new L.MarkerClusterGroup({
+                // The iconCreateFunction takes the cluster as an argument and returns
+                // an icon that represents it. We use L.mapbox.marker.icon in this
+                // example, but you could also use L.icon or L.divIcon.
+                iconCreateFunction: function(cluster) {
+                  return L.mapbox.marker.icon({
+                    // show the number of markers in the cluster on the icon.
+                    'marker-symbol': cluster.getChildCount(),
+                    'marker-color': '#422'
+                  });
+                }
               });
-              addInfoWindowForCamera(position_marker, business);
-            };
+              e.target.eachLayer(function(layer) {
+                  clusterGroup.addLayer(layer);
+              });
+              map.addLayer(clusterGroup);
+          });
 
-            function mapBusinesses(businesses){
-              _(businesses).each(function(business){ createMarkerForBusiness(businesses) });
-            };
+          map.featureLayer.on('click', function(e) {
+              map.panTo(e.layer.getLatLng());
+          });
 
+          $('a.zoom').on('click', function(e) {
+            e.preventDefault();
+            map.setView(map.getCenter(), this.getAttribute('data-zoom'));
+          });
 
-            };
-
-          google.maps.event.addDomListener(window, 'load', initialize);
-
-          ////////////////////////map 2 ///////////////////
-        // :javascript
-        //   //for map 2
-        //   var map = L.map('map2').setView([34.050, -118.2500], 16);
-        //   L.tileLayer('http://{s}.tiles.mapbox.com/v3/jmac8424.k6lb8hf1/{z}/{x}/{y}.png', 
-        //   {
-        //     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a/>/ contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>/, /Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        //     maxZoom: 15
-        //   }).addTo(map);
-        //     var geojson_data = $.get('/businesses/get_markers.json');
-        //     console.log(geojson_data)
-        // /////////////// map 3 ////////////
-
-        // :javascript 
-        //   src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'
-
-        //   L.mapbox.accessToken = 'pk.eyJ1Ijoiam1hYzg0MjQiLCJhIjoiczNhRG5wNCJ9.///9Th4UpP0dmkcTH_c9bV2tA';
-        //   console.log("after accessToken")
-
-        //   var map = L.mapbox.map('map', 'jmac8424.k9926mgl')
-        //     .setView([34.0500, -118.2500], 14);
-
-        //   // L.marker([34.050, -118.2500]).addTo(map);
-        //   // console.log("after map")
 
 
