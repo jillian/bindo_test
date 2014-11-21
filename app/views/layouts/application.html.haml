@@ -17,39 +17,37 @@
       #map { position:relative; display:block; top:0; bottom:0; width:100%; height: 400px}
 
   %body
+  #map.clearfix
+  %nav.clearfix
+    %ul
+      %li
+        %a.zoom{ href: '#', data: { zoom: 5 } }
+          Zoom A
+      %li
+        %a.zoom{ href: '#', data: { zoom: 8 } }
+          Zoom B
+      %li
+        %a.zoom{ href: '#', data: { zoom: 11 } }
+          Zoom C
+  %nav.clearfix
+    %ul
+      %li
+        %h1 Scraping Yelp
+      / %li
+      /   %a{:href => ""} Map
+      / %li
+      /   %a{:href => ""} Categories
+      / %li
+      /   %a{:href => ""} State
+      / %li
+      /   %a{:href => ""} Neighborhood
     .container
       .sixteen.columns
-        %a.hamburger Menu
-        %nav.clearfix
-          %ul
-            %li
-              %h1 Scraping Yelp
-            / %li
-            /   %a{:href => ""} Map
-            / %li
-            /   %a{:href => ""} Categories
-            / %li
-            /   %a{:href => ""} State
-            / %li
-            /   %a{:href => ""} Neighborhood
-        %nav.clearfix
-          %ul
-            %li
-              %a.zoom{ href: '#', data: { zoom: 5 } }
-                Zoom A
-            %li
-              %a.zoom{ href: '#', data: { zoom: 8 } }
-                Zoom B
-            %li
-              %a.zoom{ href: '#', data: { zoom: 11 } }
-                Zoom C
-        #map.clearfix
-
         =yield
 
         :javascript
           var src = 'https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js';
-          L.mapbox.accessToken = 'pk.eyJ1IjoiZ3JhbSIsImEiOiJvNWFZbEowIn0.PtGgBqvt4OSBIw3iJp0NXQ';
+          L.mapbox.accessToken = 'pk.eyJ1Ijoiam1hYzg0MjQiLCJhIjoiczNhRG5wNCJ9.9Th4UpP0dmkcTH_c9bV2tA';
 
           var map = L.mapbox.map('map')
             .setView([34.0500, -118.2500], 14);

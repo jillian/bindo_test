@@ -87,6 +87,8 @@ class BusinessesController < ApplicationController
       case category
       when 'active'
         color ='#FF0000'
+      when 'arts'
+        color = '#E80C7A'
       end
       color
     end
