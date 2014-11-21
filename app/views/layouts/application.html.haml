@@ -18,11 +18,11 @@
   %body
   #map.clearfix
   %nav#menu-ui.clearfix.menu-ui
-    %a.zoom{ href: '#', data: { zoom: 7 } }
+    %a.zoom{ href: '#', :data => { zoom: 8 } }
       State
-    %a.zoom{ href: '#', data: { zoom: 11 } }
+    %a.zoom{ href: '#', :data => { zoom: 12 } }
       City
-    %a.zoom{ href: '#', data: { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
+    %a.zoom{ href: '#', :data => { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
       Individual Store
     %a#filter-all.active{:href => "#"} All businesses
     %a#filter-all.food{:href => "#"} Restaurants

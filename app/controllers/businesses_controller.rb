@@ -51,6 +51,7 @@ class BusinessesController < ApplicationController
     @businesses = Business.all
     @businesses.by_category(params[:category]) if params.has_key?(:category)
     @businesses.by_location(params[:location]) if params.has_key?(:location)
+    @businesses.by_zipcode(params[:zipcode]) if params.has_key?(:zipcode)
   end
 
 
