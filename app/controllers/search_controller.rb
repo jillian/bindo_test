@@ -2,7 +2,7 @@ class SearchController < ApplicationController
 
   def run
     test = Search.new
-    test.locate_businesses
+    test.scrape_businesses
     redirect_to root_url
   end
 
