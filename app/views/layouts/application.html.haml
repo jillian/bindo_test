@@ -25,7 +25,7 @@
     %a.zoom{ href: '#', :data => { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
       Individual Store
     %a#filter-all.all{:href => "#"} All businesses
-    %a#filter-all.food{:href => "#"} Restaurants
+    %a#filter-food.food{:href => "#"} Restaurants
   %p Click the search icon to search by location.
   
   %h1 Scraping Yelp
@@ -44,6 +44,27 @@
           all = document.getElementById('filter-all'),
           state = document.getElementById('filter-state'),
           food = document.getElementById('filter-food');
+
+      food.onclick = function(e) {
+          all.className = '';
+          this.className = 'active';
+          // The setFilter function takes a GeoJSON feature object
+          // and returns true to show it or false to hide it.
+          map.markerLayer.setFilter(function(f) {
+              return f.properties['category']['name'] === 'food';
+          });
+          return false;
+        };
+
+        all.onclick = function() {
+          food.className = '';
+          this.className = 'active';
+          map.markerLayer.setFilter(function(f) {
+              // Returning true for all markers shows everything.
+              return true;
+          });
+          return false;
+        };
 
       var myLayer = L.mapbox.featureLayer().addTo(map);
 
@@ -100,29 +121,5 @@
         e.preventDefault();
         map.setView(map.getCenter(), this.getAttribute('data-zoom'));
       });
-
-      //filters
-        var food = document.getElementById('filter-food');
-        var all = document.getElementById('filter-all');
-        food.onclick = function(e) {
-          all.className = '';
-          this.className = 'active';
-          // The setFilter function takes a GeoJSON feature object
-          // and returns true to show it or false to hide it.
-          map.markerLayer.setFilter(function(f) {
-              return f.properties['category']['name'] === 'food';
-          });
-          return false;
-        };
-
-        all.onclick = function() {
-          food.className = '';
-          this.className = 'active';
-          map.markerLayer.setFilter(function(f) {
-              // Returning true for all markers shows everything.
-              return true;
-          });
-          return false;
-      };
 
 
