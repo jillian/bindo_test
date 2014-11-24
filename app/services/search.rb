@@ -7,7 +7,7 @@ class Search
   def scrape_businesses
     categories = ['active','arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
 
-    states = { CA: { "Los_Angeles" => ['Echo_Park'] } } 
+    states = { CA: { "Los_Angeles" => ['Beverly_Hills'] } } 
       # ,'Beverley_Crest','Beverly_Grove','Beverly_Hills','Beverlywood','Boyle_Heights','Brentwood', 'Burbank','Canoga_Park','Carthay','Central_Alameda','Century_City','Chatsworth','Chesterfield_Square','Cheviot_Hills','Chinatown','Culver_City','Cypress_Park', 'Downtown', 'Encino', 'Echo_Park', 'Glendale', 'Hollywood', 'Koreatown', 'Malibu', 'North_Hollywood', 'Pasadena', 'Redondo_Beach', 'Santa_Monica', 'Sherman_Oaks', 'Torrance', 'West_Hollywood', 'West_Los_Angeles' ] } }
     #todo: each state/city can be it's own sidekiq worker
     categories.each do |category|

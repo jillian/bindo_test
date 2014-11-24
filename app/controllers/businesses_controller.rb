@@ -54,7 +54,46 @@ class BusinessesController < ApplicationController
     @businesses.by_zipcode(params[:zipcode]) if params.has_key?(:zipcode)
   end
 
+  # def by_zipcode
+  #   @bev_hills = Business.where("zipcode = '90210'")
+  #   # SELECT * from businesses where zipcode = '90210';)
+  # end
 
+  def by_zipcode(zipcode)
+    where("zipcode = ?", zipcode)
+    geojson_2 = {
+          "type" => "FeatureCollection",
+          "features" => []
+        }
+    if businesses.size > 0
+      businesses.each do |business|
+        if business.location.present?
+          geojson_2["features"] << {
+              type: 'Feature',
+              properties: {
+                title: business.name,
+                address: business.address,
+                category: business.category.name,
+                image: business.image,
+                zipcode: business.zipcode,
+                :'marker-color' => map_color_by_category(business.category.name),
+                :'marker-symbol' => 'circle',
+                :'marker-size' => 'medium'
+              },
+              geometry: {
+                type: 'Point',
+                coordinates: [business.location.longitude, business.location.latitude]
+              }
+            }
+        else
+          Rails.logger.error("no lat/long")
+        end
+      end
+    else
+      Rails.logger.error("Size is 0")
+    end
+    render json: geojson_2
+  end
 
   # GET /businesses/1
   # GET /businesses/1.json
