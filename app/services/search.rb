@@ -7,16 +7,16 @@ class Search
   def scrape_businesses
     categories = ['active','arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
 
-    states = { CA: { "Los_Angeles" => ['Beverly_Hills','Beverley_Crest','Beverly_Grove','Beverly_Hills','Beverlywood','Boyle_Heights','Brentwood', 'Burbank','Canoga_Park','Carthay','Central_Alameda','Century_City','Chatsworth','Chesterfield_Square','Cheviot_Hills','Chinatown','Culver_City','Cypress_Park', 'Downtown', 'Encino', 'Echo_Park', 'Glendale', 'Hollywood', 'Koreatown', 'Malibu', 'North_Hollywood', 'Pasadena', 'Redondo_Beach', 'Santa_Monica', 'Sherman_Oaks', 'Torrance', 'West_Hollywood', 'West_Los_Angeles' ] } }
+    states = { CA: { "Los_Angeles" => ['Beverly_Hills','Beverley_Crest','Beverly_Grove','Beverly_Hills','Beverlywood','Boyle_Heights','Brentwood', 'Burbank','Canoga_Park','Carthay','Central_Alameda','Century_City','Chatsworth','Chesterfield_Square','Cheviot_Hills','Chinatown','Culver_City','Cypress_Park', 'Downtown', 'Encino', 'Echo_Park', 'Glendale', 'Hollywood', 'Inglewood', 'Koreatown', 'Malibu', 'North_Hollywood', 'Pasadena', 'Redondo_Beach', 'Santa_Monica', 'Sherman_Oaks', 'Torrance', 'West_Hollywood', 'West_Los_Angeles' ] } }
     #todo: each state/city can be it's own sidekiq worker
     categories.each do |category|
-      sleep 10
+      sleep 20
       states.each do |state, cities|
         sleep 1
         cities.each do |city, neighborhoods|
           sleep 1
           neighborhoods.each do |neighborhood|
-            sleep 10
+            sleep 20
               begin 
                 initial_page_request = RestClient.get("http://www.yelp.com/search?cflt=#{category}&l=p%3A#{state}%3A#{city}%3A%3A#{neighborhood}", "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36")
                 # find main("\w*") and string parse for unique ID:

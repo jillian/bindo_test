@@ -24,6 +24,20 @@ categories = [
 ]
 Category.create(categories)
 
+businesses = JSON.parse(IO.read("#{Rails.root}/db/Business.all.json"))
+businesses.each do |business|
+  Business.create(business)
+end
+
+categories = JSON.parse(IO.read("#{Rails.root}/db/Category.all.json"))
+categories.each do |cat|
+  Category.create(cat)
+end
+
+locations = JSON.parse(IO.read("#{Rails.root}/db/Location.all.json"))
+locations.each do |loc|
+  Location.create(loc)
+end
 
 
 
