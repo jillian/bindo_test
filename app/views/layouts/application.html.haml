@@ -24,7 +24,7 @@
       City
     %a.zoom{ href: '#', :data => { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
       Individual Store
-    %a#filter-all.active{:href => "#"} All businesses
+    %a#filter-all.all{:href => "#"} All businesses
     %a#filter-all.food{:href => "#"} Restaurants
   %p Click the search icon to search by location.
   
@@ -74,15 +74,10 @@
           });
       });
 
-      // Since featureLayer is an asynchronous method, we use the `.on('ready'`
-      // call to only use its marker data once we know it is actually loaded.
       L.mapbox.featureLayer('jmac8424.k6lb8hf1').on('ready', function(e) {
           // The clusterGroup gets each marker in the group added to it
           // once loaded, and then is added to the map
           var clusterGroup = new L.MarkerClusterGroup({
-            // The iconCreateFunction takes the cluster as an argument and returns
-            // an icon that represents it. We use L.mapbox.marker.icon in this
-            // example, but you could also use L.icon or L.divIcon.
             iconCreateFunction: function(cluster) {
               return L.mapbox.marker.icon({
                 // show the number of markers in the cluster on the icon.
@@ -106,5 +101,28 @@
         map.setView(map.getCenter(), this.getAttribute('data-zoom'));
       });
 
+      //filters
+        var food = document.getElementById('filter-food');
+        var all = document.getElementById('filter-all');
+        food.onclick = function(e) {
+          all.className = '';
+          this.className = 'active';
+          // The setFilter function takes a GeoJSON feature object
+          // and returns true to show it or false to hide it.
+          map.markerLayer.setFilter(function(f) {
+              return f.properties['category']['name'] === 'food';
+          });
+          return false;
+        };
+
+        all.onclick = function() {
+          food.className = '';
+          this.className = 'active';
+          map.markerLayer.setFilter(function(f) {
+              // Returning true for all markers shows everything.
+              return true;
+          });
+          return false;
+      };
 
 

@@ -33,7 +33,8 @@ gem 'pry'
 gem 'whenever', :require => false
 gem 'mechanize'
 gem 'kaminari'
-gem 'mapbox-rails'
+gem 'bootstrap-kaminari-views'
+
 
 
 

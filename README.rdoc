@@ -2,9 +2,8 @@
 
 To run the scrape, run rails server and then go to localhost:3000/search
 
-Updates
-Monday, 17 Nov - adding map functionality
-Tuesday, 18 Nov - 12:45 AM - map markers not appearing. Blocked from yelp. Will try again tomorrow morning using Hotspot Shield
+24 November - On github! https://immense-hollows-1838.herokuapp.com
+Trying /search returns a 500 error, though.
 
-** Note - You still have to manually enter in the location data (/app/services/search.rb:9). Working on scraping location options and eventually to add in a search and/or using Mechanize to allow for searching
+
 

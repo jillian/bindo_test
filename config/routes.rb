@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :businesses, only: [ :index ] do 
     get :get_markers, on: :collection
     get :by_zipcode, on: :collection
+    get 'page/:page', action: :index, on: :collection
   end
 
   root 'businesses#index'
