@@ -11,7 +11,7 @@
       %th Category
       %th Latitude
       %th Longitude
-      %th Image
+      /%th Image
     - @businesses.each do |business|
       %tr
         %td= business.id
@@ -22,7 +22,7 @@
         %td= business.category.name if business.category.present?
         %td= business.location.latitude if business.location.present?
         %td= business.location.longitude if business.location.present?
-        %td= image_tag business.image, style: "width:50px;"
+        / %td= #image_tag "http://#{business.image.split(//)[1]}", style: "width:50px;"
 
 
 = paginate @businesses

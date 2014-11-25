@@ -109,6 +109,11 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def get_biz_img(img_url)  
+    img_urls = img_url.split('//')
+    "http://#{img_urls[1]}"
+  end
+
   private
 
     def set_business
@@ -170,10 +175,4 @@ class BusinessesController < ApplicationController
       end
       color
     end
-
-
- def get_biz_img(img_url)  
-    img_urls = img_url.split('//')
-    "http://#{img_urls[1]}"
-  end
 end
