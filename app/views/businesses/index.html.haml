@@ -24,4 +24,4 @@
         %td= business.location.longitude if business.location.present?
         %td= image_tag business.image, style: "width:50px;"
 
-  / = #paginate @businesses, theme: 'twitter-bootstrap'
+= paginate @businesses, theme: 'twitter-bootstrap'

@@ -1,9 +1,5 @@
-== TO RUN
-
-To run the scrape, run rails server and then go to localhost:3000/search
-
 24 November - On github! https://immense-hollows-1838.herokuapp.com
-Trying /search returns a 500 error, though.
+
 
 
 

@@ -40,7 +40,7 @@
 
       var map = L.mapbox.map('map', 'jmac8424.k6lb8hf1').setView([34.0500, -118.2500], 14)
         .addControl(L.mapbox.geocoderControl('mapbox.places-v1')),
-          zipcode = document.getElementById('filter-zipcode')
+          zipcode = document.getElementById('filter-zipcode'),
           all = document.getElementById('filter-all'),
           state = document.getElementById('filter-state'),
           food = document.getElementById('filter-food');
@@ -56,15 +56,15 @@
           return false;
         };
 
-        all.onclick = function() {
-          food.className = '';
-          this.className = 'active';
-          map.markerLayer.setFilter(function(f) {
-              // Returning true for all markers shows everything.
-              return true;
-          });
-          return false;
-        };
+      all.onclick = function() {
+        food.className = '';
+        this.className = 'active';
+        map.markerLayer.setFilter(function(f) {
+            // Returning true for all markers shows everything.
+            return true;
+        });
+        return false;
+      };
 
       var myLayer = L.mapbox.featureLayer().addTo(map);
 

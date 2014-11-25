@@ -1,9 +1,8 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
+  
   def index
-    # @businesses = Business.where(available: true)
-
     @businesses = Business.all.includes(:location, :category).page(params[:page])
     respond_with @businesses
   end
