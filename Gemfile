@@ -34,7 +34,6 @@ gem 'whenever', :require => false
 gem 'mechanize'
 gem 'kaminari'
 gem 'will_paginate', '~> 3.0.6'
-gem 'bootstrap-kaminari-views'
 gem 'rails_12factor', group: :production
 
 

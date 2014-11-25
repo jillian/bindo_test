@@ -97,11 +97,13 @@
     %label 
     %label 
     %label Shopping
+  %h1{:style => 'text-align:center;'} Scraping Yelp 
+  %a.btn{:href => "#", :style =>'text-align:center;'} Click Here for Table of Businesses
   %br
-  %h1 Scraping Yelp
   .container
     .sixteen.columns
-      / =#yield
+    
+    = yield
 
     :javascript
       var src = 'https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js';

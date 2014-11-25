@@ -3,8 +3,7 @@ class BusinessesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @businesses = Business.all.includes(:location, :category)
-    # .page(params[:page])
+    @businesses = Business.all.includes(:location, :category).page(params[:page])
     # respond_with @businesses
   end
 
@@ -173,10 +172,8 @@ class BusinessesController < ApplicationController
     end
 
 
- def get_biz_img(img_url)
-    Rails.logger.info( "image url => #{img_url}")
+ def get_biz_img(img_url)  
     img_urls = img_url.split('//')
-    Rails.logger.info "img urls #{img_urls}"
     "http://#{img_urls[1]}"
   end
 end
