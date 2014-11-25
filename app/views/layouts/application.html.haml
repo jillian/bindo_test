@@ -35,8 +35,8 @@
     %a.zoom{ href: '#', :data => { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
       Individual Store
     %a#filter-all.all{:href => "#"} All businesses
-    %a#filter-zipcode.zipcode{:href => "#"} Zipcode 90210
-    %a#filter-food.food{:href => "#"} Food markers
+    %a#filter-zipcode.zipcode{:href => "#"} Zipcode 90064
+    %a#filter-active.active{:href => "#"} Active Life Markers
 
   %p Click the search icon to search by location.
   #legend{:style => "display:none;"}
@@ -113,7 +113,7 @@
           zipcode = document.getElementById('filter-zipcode'),
           all = document.getElementById('filter-all'),
           state = document.getElementById('filter-state'),
-          food = document.getElementById('filter-food');
+          active = document.getElementById('filter-active');
 
       map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
@@ -156,31 +156,31 @@
 
       zipcode.onclick = function(e) {
           all.className = '';
-          food.className = '';
+          active.className = '';
           this.className = 'active';
           // The setFilter function takes a GeoJSON feature object
           // and returns true to show it or false to hide it.
           myLayer.setFilter(function(f) {
-              return f.properties['zipcode'] === 90210;
+              return f.properties['zipcode'] === 90064;
           });
           return false;
         };
 
-      food.onclick = function(e) {
+      active.onclick = function(e) {
           all.className = '';
           zipcode.className = '';
           this.className = 'active';
           // The setFilter function takes a GeoJSON feature object
           // and returns true to show it or false to hide it.
           myLayer.setFilter(function(f) {
-              return f.properties['category'] === 'food';
+              return f.properties['category'] === 'active';
           });
           return false;
         };
 
       all.onclick = function() {
         zipcode.className = '';
-        food.className = '';
+        active.className = '';
         this.className = 'active';
         myLayer.setFilter(function(f) {
             // Returning true for all markers shows everything.
