@@ -99,14 +99,14 @@
   %h1 Scraping Yelp
   .container
     .sixteen.columns
-      =yield
+      / =#yield
 
     :javascript
       var src = 'https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js';
       
       L.mapbox.accessToken = 'pk.eyJ1Ijoiam1hYzg0MjQiLCJhIjoiczNhRG5wNCJ9.9Th4UpP0dmkcTH_c9bV2tA';
 
-      var map = L.mapbox.map('map', 'jmac8424.k6lb8hf1').setView([34.0500, -118.2700], 10)
+      var map = L.mapbox.map('map', 'jmac8424.k6lb8hf1').setView([34.1014861, -118.4571974], 10)
         .addControl(L.mapbox.geocoderControl('mapbox.places-v1')),
           zipcode = document.getElementById('filter-zipcode'),
           all = document.getElementById('filter-all'),

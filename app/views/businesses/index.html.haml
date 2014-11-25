@@ -22,7 +22,7 @@
         %td= business.category.name if business.category.present?
         %td= business.location.latitude if business.location.present?
         %td= business.location.longitude if business.location.present?
-        %td= image_tag business.image, style: "width:50px;"
+        / %td= #image_tag business.image, style: "width:50px;"
 
 
 / = #will_paginate @businesses
