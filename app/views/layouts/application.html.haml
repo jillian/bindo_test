@@ -14,7 +14,17 @@
     = javascript_include_tag "application"
     :css
       body { margin:0; padding:0; }
-      #map { position:relative; display:block; top:0; bottom:0; width:100%; height: 400px}
+      #map { position:relative; display:block; top:0; bottom:0; width:100%; height: 500px}
+      .legend label,
+      .legend span {
+        display:block;
+        float:left;
+        height:15px;
+        width:10%;
+        text-align:center;
+        font-size:9px;
+        color:#808080;
+        }
   %body
   #map.clearfix
   %nav#menu-ui.clearfix.menu-ui
@@ -27,7 +37,65 @@
     %a#filter-all.all{:href => "#"} All businesses
     %a#filter-food.food{:href => "#"} Restaurants
   %p Click the search icon to search by location.
-  
+  #legend{:style => "display:none;"}
+  %h5{:style => "text-align:center;"}  Key
+  %nav.legend.clearfix
+    %span{:style => "background:#FF0000;"}
+    %span{:style => "background:#E80C7A;"}
+    %span{:style => "background:#6A7287;"}
+    %span{:style => "background:#0A8CFF;"}
+    %span{:style => "background:#16FFF1;"}
+    %span{:style => "background:#09E89B;"}
+    %span{:style => "background:#0AFF65;"}
+    %span{:style => "background:#FF0A80;"}
+    %span{:style => "background:#B609E8;"}
+    %span{:style => "background:#7A38E8;"}
+    %label Active Life
+    %label Arts
+    %label Auto 
+    %label Beauty Services
+    %label Education
+    %label Financial Services
+    %label Food
+    %label Health
+    %label Home Services
+    %label Hotel/Travel
+  %br
+  %nav.legend.clearfix
+    %span{:style => "background:#FFF50E;"}
+    %span{:style => "background:#D3D3D3;"}
+    %span{:style => "background:#20E840;"}
+    %span{:style => "background:#000;"}
+    %span{:style => "background:#02FF2C;"}
+    %span{:style => "background:#C607FF;"}
+    %span{:style => "background:#FFA500;"}
+    %span{:style => "background:#FFF50E;"}
+    %span{:style => "background:#0C72FF;"}
+    %span{:style => "background:#5C4033;"}
+    %label Local Flavor
+    %label Local Services
+    %label Mass Media 
+    %label Nightlife
+    %label Pets
+    %label Professional Services
+    %label Public Services/Gov't
+    %label Real Estate
+    %label Religious Orgs.
+    %label Restaurants
+  %br
+  %nav.legend.clearfix
+    %span{:style => "background:#42E8B4;"}
+    %label 
+    %label 
+    %label 
+    %label 
+    %label 
+    %label 
+    %label 
+    %label 
+    %label 
+    %label Shopping
+  %br
   %h1 Scraping Yelp
   .container
     .sixteen.columns
@@ -44,6 +112,7 @@
           all = document.getElementById('filter-all'),
           state = document.getElementById('filter-state'),
           food = document.getElementById('filter-food');
+      map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
       food.onclick = function(e) {
           all.className = '';
