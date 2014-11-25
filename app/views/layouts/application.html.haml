@@ -14,7 +14,7 @@
     = javascript_include_tag "application"
     :css
       body { margin:0; padding:0; }
-      #map { position:relative; display:block; top:0; bottom:0; width:100%; height: 500px}
+      #map { position:relative; display:block; top:0; bottom:0; width:100%; height: 450px}
       .legend label,
       .legend span {
         display:block;
@@ -106,7 +106,7 @@
       
       L.mapbox.accessToken = 'pk.eyJ1Ijoiam1hYzg0MjQiLCJhIjoiczNhRG5wNCJ9.9Th4UpP0dmkcTH_c9bV2tA';
 
-      var map = L.mapbox.map('map', 'jmac8424.k6lb8hf1').setView([34.0500, -118.2500], 14)
+      var map = L.mapbox.map('map', 'jmac8424.k6lb8hf1').setView([34.0500, -118.2700], 10)
         .addControl(L.mapbox.geocoderControl('mapbox.places-v1')),
           zipcode = document.getElementById('filter-zipcode'),
           all = document.getElementById('filter-all'),
