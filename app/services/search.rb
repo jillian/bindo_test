@@ -88,7 +88,7 @@ class Search
                       city: city_name,
                       state: state,
                       image: image,
-                      category: Category.new({name: category})
+                      category: Category.find_by(name: category)
                     })
                   
                     html_page.css('script').map(&:text)

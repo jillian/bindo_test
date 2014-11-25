@@ -24,7 +24,7 @@ class BusinessesController < ApplicationController
               title: business.name,
               address: business.address,
               category: business.category.name,
-              image: business.image,
+              image: get_biz_img(business.image),
               zipcode: business.zipcode,
               :'marker-color' => map_color_by_category(business.category.name), # '#00607d',
               :'marker-symbol' => 'circle',
@@ -171,4 +171,12 @@ class BusinessesController < ApplicationController
       end
       color
     end
+
+
+ def get_biz_img(img_url)
+    Rails.logger.info( "image url => #{img_url}")
+    img_urls = img_url.split('//')
+    Rails.logger.info "img urls #{img_urls}"
+    "http://#{img_urls[1]}"
+  end
 end

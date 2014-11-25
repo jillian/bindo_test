@@ -1,11 +1,12 @@
+Category.delete_all
 categories = [
-  :name =>'active',
-  :name =>'arts',
-  :name =>'auto',
-  :name =>'beautysvc',
-  :name =>'education',
-  :name =>'eventservices',
-  :name =>'financialservices',
+  {:name =>'active', :display_name => 'Active Life'},
+  {:name =>'arts', :display_name => 'Arts'}
+  {:name =>'auto', :display_name => 'Auto'}
+  :name =>'beautysvc', :display_name => 'Beauty Services'
+  :name =>'education', :display_name =>
+  :name =>'eventservices', :display_name =>
+  :name =>'financialservices', :display_name =>
   :name =>'food',
   :name =>'health',
   :name =>'homeservices',

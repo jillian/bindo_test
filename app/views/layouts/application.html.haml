@@ -32,8 +32,8 @@
       State
     %a.zoom{ href: '#', :data => { zoom: 12 } }
       City
-    %a.zoom{ href: '#', :data => { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
-      Individual Store
+    %a#filter-business.business{ href: '#', :data => { zoom: 18, 'position' => '34.1231385, -118.2689007' } }
+      Individual Business
     %a#filter-all.all{:href => "#"} All businesses
     %a#filter-zipcode.zipcode{:href => "#"} Zipcode 90064
     %a#filter-active.active{:href => "#"} Active Life Markers
@@ -114,6 +114,7 @@
           all = document.getElementById('filter-all'),
           state = document.getElementById('filter-state'),
           active = document.getElementById('filter-active');
+          business = document.getElementById('filter-business')
 
       map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
@@ -126,13 +127,16 @@
       //disable scroll zoom
       map.scrollWheelZoom.disable();
 
+
       // Add custom popup html to each marker.
+
       myLayer.on('layeradd', function(e) {
-          var marker = e.layer;
-          var feature = marker.feature;
-          var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+        var marker = e.layer;
+        var feature = marker.feature;
+        var display_name = lazy_list[feature.properties.category]; 
+        var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
                               '<h2>' + feature.properties.title + '</h2>' +
-                              '<h5>' + feature.properties.category + '</h5>' +
+                              '<h5>' + display_name + '</h5>' +
                               '<div class="details">' +
                               '<img src="' + feature.properties.image + '">' +
                               '<address>' + feature.properties.address + '</address>' + 
@@ -178,7 +182,7 @@
           return false;
         };
 
-      all.onclick = function() {
+      all.onclick = function(e) {
         zipcode.className = '';
         active.className = '';
         this.className = 'active';
@@ -189,4 +193,28 @@
         return false;
       };
 
-
+      var lazy_list = {
+        'active': 'Active Life',
+        'arts': 'Arts',
+        'auto': 'Auto',
+        'beautysvc': 'Beauty Services',
+        'education': 'Education',
+        'eventservices': 'Event Services',
+        'financialservices': 'Financial Services',
+        'food': 'Food',
+        'health': 'Health',
+        'homeservices': 'Home Services',
+        'nightlife': 'Nightlife',
+        'pets': 'Pets',
+        'hotelstravel': 'Hotels Travel',
+        'localflavor': 'Local Flavor',
+        'localservices': 'Local Services',
+        'massmedia': 'Mass Media',
+        'professional': 'Professional',
+        'publicservicesgovt': 'Public Services/Govt',
+        'realestate': 'Real Estate',
+        'religiousorgs': 'Religious Orgs.',
+        'restaurants':  'Restaurants',
+        'shopping': 'Shopping'
+      };
+        
