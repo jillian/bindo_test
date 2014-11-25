@@ -5,7 +5,8 @@ require "pry"
 class Search
 
   def scrape_businesses
-    categories = ['active','arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices','hotelstravel','localflavor','localservices','massmedia','nightlife','pets','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
+    categories = ['pets','hotelstravel','localflavor','localservices','massmedia','nightlife','professional','publicservicesgovt','realestate','religiousorgs','restaurants','shopping']
+    #'active','arts','auto','beautysvc','education','eventservices','financialservices','food','health','homeservices',
 
     #neighborhoods can be captured from nokogiri. path => '#neighborhoods-list > div > ul > li:nth-child(2) > ul:nth-child(1) > li:nth-child(1) > a'
     states = { CA: { "Los_Angeles" => ['Adams_Normandie','Arleta','Arlington_Heights','Arts_District','Athens','Atwater_Village','Beverly_Hills','Beverley_Crest','Beverly_Grove','Beverly_Hills','Beverlywood','Boyle_Heights','Brentwood', 'Burbank','Canoga_Park','Carthay','Central_Alameda','Century_City','Chatsworth','Chesterfield_Square','Cheviot_Hills','Chinatown','Culver_City','Cypress_Park', 'Downtown', 'Encino', 'Echo_Park', 'Glendale', 'Hollywood', 'Inglewood', 'Koreatown','Little_Tokyo','Los_Feliz', 'Malibu','North_Hills', 'North_Hollywood', 'North_Ridge', 'Pacific_Palisades','Pacoima','Palms','Pasadena', 'Porter_Ranch','Rancho_Park','Redondo_Beach', 'Santa_Monica', 'Sawtelle','Sepulveda_Basin','Shadow_Hills', 'Sherman_Oaks','Silver_Lake','South_Park', 'Tarzana', 'Terminal_Island','Toluca_Lake', 'Torrance','UCLA', 'Universal_City', 'Universal,Park', 'Valley_Glen', 'Van_Nuys', 'Venice','Walnut_Park', 'West Hills', 'West_Hollywood', 'West_Los_Angeles', 'Westchester', 'Westlake','Westmont','Wilmington','Wilshire_Center','Windsor_Square','Winnetka','Woodland_Hills' ] } }

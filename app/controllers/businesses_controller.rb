@@ -1,10 +1,11 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
-  
+
   def index
-    @businesses = Business.all.includes(:location, :category).page(params[:page])
-    respond_with @businesses
+    @businesses = Business.all.includes(:location, :category)
+    # .page(params[:page])
+    # respond_with @businesses
   end
 
   def get_markers
