@@ -16,26 +16,30 @@ class BusinessesController < ApplicationController
         }
     if businesses.size > 0
       businesses.each do |business|
-        if business.location.present?
-          geojson["features"] << {
-            type: 'Feature',
-            properties: {
-              title: business.name,
-              address: business.address,
-              category: business.category.name,
-              image: get_biz_img(business.image),
-              zipcode: business.zipcode,
-              :'marker-color' => map_color_by_category(business.category.name), # '#00607d',
-              :'marker-symbol' => 'circle',
-              :'marker-size' => 'medium'
-            },
-            geometry: {
-              type: 'Point',
-              coordinates: [business.location.longitude, business.location.latitude]
+        if business.category.present?
+          if business.location.present?
+            geojson["features"] << {
+              type: 'Feature',
+              properties: {
+                title: business.name,
+                address: business.address,
+                category: business.category.name,
+                image: get_biz_img(business.image),
+                zipcode: business.zipcode,
+                :'marker-color' => map_color_by_category(business.category.name), # '#00607d',
+                :'marker-symbol' => 'circle',
+                :'marker-size' => 'medium'
+              },
+              geometry: {
+                type: 'Point',
+                coordinates: [business.location.longitude, business.location.latitude]
+              }
             }
-          }
+          else
+            Rails.logger.error("no lat/long")
+          end
         else
-          Rails.logger.error("no lat/long")
+          Rails.logger.error("no category, migration error")
         end
       end
     else
