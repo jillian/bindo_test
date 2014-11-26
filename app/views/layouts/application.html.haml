@@ -107,33 +107,31 @@
       
       L.mapbox.accessToken = 'pk.eyJ1Ijoiam1hYzg0MjQiLCJhIjoiczNhRG5wNCJ9.9Th4UpP0dmkcTH_c9bV2tA';
 
-      var map = L.mapbox.map('map', 'jmac8424.k6lb8hf1').setView([34.1014861, -118.4571974], 10)
-        .addControl(L.mapbox.geocoderControl('mapbox.places-v1')),
-          zipcode = document.getElementById('filter-zipcode'),
-          all = document.getElementById('filter-all'),
-          state = document.getElementById('filter-state'),
-          active = document.getElementById('filter-active');
-          business = document.getElementById('filter-business')
+      var map = L.mapbox.map('map')
+        .setView([34.1014861,-118.4571974], 8)
+        .addLayer(L.mapbox.tileLayer('https://api.tiles.mapbox.com/v3/jmac8424.k6lb8hf1.json'));
 
-      map.legendControl.addLegend(document.getElementById('legend').innerHTML);
-
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-
-      $.get('/businesses/get_markers.json', function(response) {
-        myLayer.setGeoJSON(response);
-      });
-
-      //disable scroll zoom
-      map.scrollWheelZoom.disable();
-
+      var geoJsonFeatures = [];
+      var zipcode = document.getElementById('filter-zipcode'),
+        all = document.getElementById('filter-all'),
+        active = document.getElementById('filter-active'),
+        business = document.getElementById('filter-business');
 
       // Add custom popup html to each marker.
+      var clusterGroup = L.markerClusterGroup();
+      map.addLayer(clusterGroup);
+      $.get('/businesses/get_markers.json', function(response) {
+        geoJsonFeatures = response.features;
+        addToMap(geoJsonFeatures);
+      });
 
-      myLayer.on('layeradd', function(e) {
-        var marker = e.layer;
-        var feature = marker.feature;
-        var display_name = lazy_list[feature.properties.category]; 
-        var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+      function addToMap(geoJsonFeatures) {
+        clusterGroup.clearLayers();
+        for( var idx in geoJsonFeatures ) {
+          var feature = geoJsonFeatures[idx];
+          var display_name = lazy_list[feature.properties.category]; 
+          var marker = new L.Marker(new L.LatLng(feature.geometry.coordinates[1],feature.geometry.coordinates[0]),{'marker-color': feature.properties['marker-color']});
+          var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
                               '<h2>' + feature.properties.title + '</h2>' +
                               '<h5>' + display_name + '</h5>' +
                               '<div class="details">' +
@@ -142,44 +140,35 @@
                               '<zipcode>' + feature.properties.zipcode + '</zipcode>'
                                   '</div>' +
                               '</div>';
-
-          marker.bindPopup(popupContent,{
-              closeButton: false,
-              minWidth: 320
-          });
-      });
-      map.featureLayer.on('click', function(e) {
-          map.panTo(e.layer.getLatLng());
-      });
-
-      $('a.zoom').on('click', function(e) {
-        e.preventDefault();
-        map.setView(map.getCenter(), this.getAttribute('data-zoom'));
-      });
+          marker.bindPopup(popupContent, { closeButton: false, minWidth: 320 });
+          clusterGroup.addLayer(marker);
+        };
+        map.addLayer(clusterGroup);
+      }
 
       zipcode.onclick = function(e) {
-          all.className = '';
-          active.className = '';
-          this.className = 'active';
-          // The setFilter function takes a GeoJSON feature object
-          // and returns true to show it or false to hide it.
-          myLayer.setFilter(function(f) {
-              return f.properties['zipcode'] === 90064;
-          });
-          return false;
-        };
+        all.className = '';
+        active.className = '';
+        this.className = 'active';
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        myLayer.setFilter(function(f) {
+            return f.properties['zipcode'] === 90064;
+        });
+        return false;
+      };
 
       active.onclick = function(e) {
-          all.className = '';
-          zipcode.className = '';
-          this.className = 'active';
-          // The setFilter function takes a GeoJSON feature object
-          // and returns true to show it or false to hide it.
-          myLayer.setFilter(function(f) {
-              return f.properties['category'] === 'active';
-          });
-          return false;
-        };
+        all.className = '';
+        zipcode.className = '';
+        this.className = 'active';
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        myLayer.setFilter(function(f) {
+            return f.properties['category'] === 'active';
+        });
+        return false;
+      };
 
       all.onclick = function(e) {
         zipcode.className = '';
@@ -192,7 +181,7 @@
         return false;
       };
 
-      var lazy_list = {
+       var lazy_list = {
         'active': 'Active Life',
         'arts': 'Arts',
         'auto': 'Auto',
@@ -217,3 +206,6 @@
         'shopping': 'Shopping'
       };
         
+
+
+      
