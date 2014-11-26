@@ -26,7 +26,7 @@ class BusinessesController < ApplicationController
                 category: business.category.name,
                 image: get_biz_img(business.image),
                 zipcode: business.zipcode,
-                :'marker-color' => map_color_by_category(business.category.name), # '#00607d',
+                :'marker-color' => map_color_by_category(business.category.name),
                 :'marker-symbol' => 'circle',
                 :'marker-size' => 'medium'
               },
