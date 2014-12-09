@@ -24,6 +24,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', require: nil
+gem 'sidekiq-failures'
+
 gem 'nokogiri' 
 gem 'pg'
 gem 'rest_client', :require => 'rest-client'

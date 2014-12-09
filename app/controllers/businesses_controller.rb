@@ -23,10 +23,10 @@ class BusinessesController < ApplicationController
               properties: {
                 title: business.name,
                 address: business.address,
-                category: business.category.name,
+                category: business.category.display_name,
                 image: get_biz_img(business.image),
                 zipcode: business.zipcode,
-                :'marker-color' => map_color_by_category(business.category.name),
+                :'marker-color' => business.category.color,
                 :'marker-symbol' => 'circle',
                 :'marker-size' => 'medium'
               },
@@ -56,11 +56,6 @@ class BusinessesController < ApplicationController
     @businesses.by_location(params[:location]) if params.has_key?(:location)
     @businesses.by_zipcode(params[:zipcode]) if params.has_key?(:zipcode)
   end
-
-  # def by_zipcode
-  #   @bev_hills = Business.where("zipcode = '90210'")
-  #   # SELECT * from businesses where zipcode = '90210';)
-  # end
 
   def by_zipcode(zipcode)
     where("zipcode = ?", zipcode)
@@ -143,6 +138,8 @@ class BusinessesController < ApplicationController
         color = '#0A8CFF'
       when 'education'
         color = '#16FFF1'
+      when 'eventservices'
+        color = 'white'
       when 'financialservices'
         color= '#09E89B'
       when 'food'
